@@ -20,8 +20,8 @@ MealMate is a responsive web application that helps users find recipes using an 
 
 ```text
 index.html
-css/styles.css
-js/app.js
+styles.css
+app.js
 README.md
 REFERENCES.md
 TESTING.md
