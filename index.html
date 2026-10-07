@@ -1,480 +1,171 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en-GB">
 <head>
-  <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1"
-  >
-
-  <meta
-    name="description"
-    content="MealMate is a responsive meal-planning application."
-  >
-
-  <title>MealMate | Personal Meal Planner</title>
-
-  <!-- Bootstrap CSS -->
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-  >
-
-  <style>
-    :root {
-      --mealmate-green: #176b3a;
-      --mealmate-dark: #10271c;
-      --mealmate-cream: #fffaf1;
-    }
-
-    body {
-      background-color: var(--mealmate-cream);
-      color: #17221c;
-    }
-
-    .navbar,
-    .hero-section,
-    footer {
-      background-color: var(--mealmate-dark);
-    }
-
-    .hero-section {
-      color: white;
-      padding: 5rem 0;
-    }
-
-    .hero-label {
-      color: #9fe2b7;
-      font-weight: 700;
-      letter-spacing: 0.1rem;
-      text-transform: uppercase;
-    }
-
-    .btn-mealmate {
-      background-color: var(--mealmate-green);
-      border-color: var(--mealmate-green);
-      color: white;
-    }
-
-    .btn-mealmate:hover,
-    .btn-mealmate:focus {
-      background-color: #0f522c;
-      border-color: #0f522c;
-      color: white;
-    }
-
-    .meal-image {
-      width: 100%;
-      height: 260px;
-      object-fit: cover;
-    }
-
-    .skip-link {
-      position: absolute;
-      left: -9999px;
-      top: 0;
-    }
-
-    .skip-link:focus {
-      left: 1rem;
-      top: 1rem;
-      z-index: 2000;
-      padding: 0.75rem;
-      background-color: white;
-      color: black;
-    }
-  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="MealMate helps people find practical recipe ideas using ingredients and preferences they choose.">
+  <title>MealMate | Recipe Finder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/app.js" defer></script>
 </head>
-
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
 
-  <a class="skip-link" href="#main-content">
-    Skip to main content
-  </a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#top" aria-label="MealMate home">
+        <span class="brand-mark" aria-hidden="true">M</span>
+        <span>MealMate</span>
+      </a>
 
-  <!-- Navigation -->
-  <nav class="navbar navbar-expand-md navbar-dark">
-    <div class="container">
-      <a class="navbar-brand fw-bold" href="#">MealMate</a>
-
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#main-navigation"
-        aria-controls="main-navigation"
-        aria-expanded="false"
-        aria-label="Open navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="primary-navigation">
+        <span class="sr-only">Open navigation</span>
+        <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
       </button>
 
-      <div class="collapse navbar-collapse" id="main-navigation">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="#planner">Meal planner</a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="#random-meal">Random meal</a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="#cooking-tips">Cooking tips</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Hero -->
-  <header class="hero-section">
-    <div class="container text-center">
-      <p class="hero-label">Simple meal inspiration</p>
-
-      <h1 class="display-3 fw-bold">
-        Plan your next meal with MealMate
-      </h1>
-
-      <p class="lead mx-auto mt-3" style="max-width: 700px;">
-        Create a personalised meal plan and discover a random recipe
-        from around the world.
-      </p>
-
-      <a class="btn btn-light btn-lg mt-3" href="#planner">
-        Start planning
-      </a>
+      <nav id="primary-navigation" class="primary-navigation" aria-label="Primary navigation" data-open="false">
+        <a href="#planner">Find meals</a>
+        <a href="#results">Results</a>
+        <a href="#favourites">Favourites <span id="favourite-count" class="count-badge">0</span></a>
+        <button id="theme-button" class="theme-button" type="button" aria-pressed="false">Dark mode</button>
+      </nav>
     </div>
   </header>
 
-  <main id="main-content" class="container py-5">
+  <main id="main-content">
+    <section id="top" class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow">Cook with what you have</p>
+        <h1 id="hero-title">A better answer to “What should I eat?”</h1>
+        <p class="hero-intro">Tell MealMate your main ingredient and preferences. It will search real recipes and turn them into a practical shortlist.</p>
+        <a class="button button-primary" href="#planner">Find my next meal</a>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="plate"><span>Fresh ideas</span></div>
+        <div class="ingredient ingredient-one">Tomato</div>
+        <div class="ingredient ingredient-two">Herbs</div>
+      </div>
+    </section>
 
-    <!-- Meal-planning form -->
-    <section id="planner" class="card border-0 shadow-sm mb-5">
-      <div class="card-body p-4 p-md-5">
-        <h2 class="mb-3">Personal meal planner</h2>
+    <section class="benefits" aria-label="MealMate benefits">
+      <article><strong>Search intelligently</strong><span>Start with an ingredient you already have.</span></article>
+      <article><strong>Refine your choice</strong><span>Use category and cuisine preferences.</span></article>
+      <article><strong>Save favourites</strong><span>Keep useful recipes on this device.</span></article>
+    </section>
 
-        <p class="text-secondary">
-          Complete the form to receive a simple meal recommendation.
-        </p>
+    <section id="planner" class="planner-section" aria-labelledby="planner-title">
+      <div class="section-heading">
+        <p class="eyebrow">Personal meal planner</p>
+        <h2 id="planner-title">Build your recipe shortlist</h2>
+        <p>Required fields are marked with an asterisk.</p>
+      </div>
 
-        <form id="meal-form">
-          <div class="row g-4">
-
-            <div class="col-md-6">
-              <label for="user-name" class="form-label fw-bold">
-                Name
-              </label>
-
-              <input
-                id="user-name"
-                class="form-control"
-                type="text"
-                placeholder="Enter your name"
-                required
-              >
-            </div>
-
-            <div class="col-md-6">
-              <label for="meal-type" class="form-label fw-bold">
-                Meal type
-              </label>
-
-              <select id="meal-type" class="form-select" required>
-                <option value="">Choose a meal</option>
-                <option value="breakfast">Breakfast</option>
-                <option value="lunch">Lunch</option>
-                <option value="dinner">Dinner</option>
-              </select>
-            </div>
-
-            <div class="col-md-6">
-              <label for="diet" class="form-label fw-bold">
-                Dietary preference
-              </label>
-
-              <select id="diet" class="form-select" required>
-                <option value="">Choose a preference</option>
-                <option value="no special dietary requirements">
-                  No special requirements
-                </option>
-                <option value="vegetarian food">Vegetarian</option>
-                <option value="vegan food">Vegan</option>
-                <option value="gluten-free food">Gluten-free</option>
-              </select>
-            </div>
-
-            <div class="col-md-6">
-              <label for="ingredients" class="form-label fw-bold">
-                Main ingredient
-              </label>
-
-              <input
-                id="ingredients"
-                class="form-control"
-                type="text"
-                placeholder="For example, chicken or rice"
-                required
-              >
-            </div>
-
-            <div class="col-12">
-              <fieldset>
-                <legend class="fs-6 fw-bold">
-                  Cooking experience
-                </legend>
-
-                <div class="form-check form-check-inline">
-                  <input
-                    id="beginner"
-                    class="form-check-input"
-                    type="radio"
-                    name="experience"
-                    value="beginner"
-                    required
-                  >
-
-                  <label class="form-check-label" for="beginner">
-                    Beginner
-                  </label>
-                </div>
-
-                <div class="form-check form-check-inline">
-                  <input
-                    id="confident"
-                    class="form-check-input"
-                    type="radio"
-                    name="experience"
-                    value="confident"
-                  >
-
-                  <label class="form-check-label" for="confident">
-                    Confident cook
-                  </label>
-                </div>
-              </fieldset>
-            </div>
-
-            <div class="col-12">
-              <label for="notes" class="form-label fw-bold">
-                Additional notes
-              </label>
-
-              <textarea
-                id="notes"
-                class="form-control"
-                rows="4"
-                placeholder="Add any allergies or foods you wish to avoid"
-              ></textarea>
-            </div>
-
-            <div class="col-12">
-              <div class="form-check">
-                <input
-                  id="updates"
-                  class="form-check-input"
-                  type="checkbox"
-                >
-
-                <label class="form-check-label" for="updates">
-                  I would like to receive meal-planning updates
-                </label>
-              </div>
-            </div>
-
-            <div class="col-12">
-              <button class="btn btn-mealmate btn-lg" type="submit">
-                Create my meal plan
-              </button>
-            </div>
+      <form id="meal-form" class="planner-form" novalidate>
+        <div class="form-grid">
+          <div class="field">
+            <label for="user-name">Your name <span aria-hidden="true">*</span></label>
+            <input id="user-name" name="userName" type="text" autocomplete="name" minlength="2" maxlength="40" required aria-describedby="name-help name-error">
+            <small id="name-help">This personalises your results.</small>
+            <span id="name-error" class="field-error" aria-live="polite"></span>
           </div>
-        </form>
 
-        <div
-          id="plan-result"
-          class="alert alert-success mt-4 d-none"
-          role="status"
-          aria-live="polite"
-        ></div>
-      </div>
+          <div class="field">
+            <label for="ingredient">Main ingredient <span aria-hidden="true">*</span></label>
+            <input id="ingredient" name="ingredient" type="search" list="ingredient-suggestions" placeholder="For example, chicken" minlength="2" maxlength="40" required aria-describedby="ingredient-help ingredient-error">
+            <datalist id="ingredient-suggestions">
+              <option value="Chicken"><option value="Salmon"><option value="Potato"><option value="Rice"><option value="Tomato"><option value="Beef"><option value="Lentils">
+            </datalist>
+            <small id="ingredient-help">Enter one main ingredient in English.</small>
+            <span id="ingredient-error" class="field-error" aria-live="polite"></span>
+          </div>
+
+          <div class="field">
+            <label for="category">Meal category</label>
+            <select id="category" name="category">
+              <option value="">Any category</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="area">Cuisine</label>
+            <select id="area" name="area">
+              <option value="">Any cuisine</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="city">Your city</label>
+            <input id="city" name="city" type="text" autocomplete="address-level2" maxlength="60" placeholder="For weather-based guidance" aria-describedby="city-help">
+            <small id="city-help">Optional. MealMate uses the current temperature, not your precise location.</small>
+          </div>
+
+          <div class="field">
+            <label for="servings">Number of servings</label>
+            <input id="servings" name="servings" type="number" min="1" max="12" value="2">
+          </div>
+        </div>
+
+        <fieldset class="choice-group">
+          <legend>Cooking confidence <span aria-hidden="true">*</span></legend>
+          <label><input type="radio" name="experience" value="beginner" required> Beginner</label>
+          <label><input type="radio" name="experience" value="confident"> Confident cook</label>
+          <span id="experience-error" class="field-error" aria-live="polite"></span>
+        </fieldset>
+
+        <fieldset class="choice-group">
+          <legend>Preferences</legend>
+          <label><input type="checkbox" name="quickOnly" value="yes"> Keep instructions simple</label>
+          <label><input type="checkbox" name="saveSearch" value="yes"> Remember this search on this device</label>
+        </fieldset>
+
+        <div class="field field-wide">
+          <label for="notes">Foods to avoid or other notes</label>
+          <textarea id="notes" name="notes" rows="3" maxlength="180" placeholder="For example, no peanuts"></textarea>
+          <small><span id="notes-count">0</span>/180 characters. Notes are displayed as a reminder and do not replace allergen checking.</small>
+        </div>
+
+        <div class="form-actions">
+          <button id="search-button" class="button button-primary" type="submit">Search recipes</button>
+          <button id="reset-button" class="button button-secondary" type="reset">Clear form</button>
+        </div>
+      </form>
     </section>
 
-    <!-- JavaScript API -->
-    <section id="random-meal" class="mb-5">
-      <div class="d-md-flex justify-content-between align-items-center mb-3">
+    <section id="results" class="results-section" aria-labelledby="results-title">
+      <div class="section-heading results-heading">
         <div>
-          <h2>Random meal inspiration</h2>
-
-          <p class="text-secondary mb-md-0">
-            Retrieve a meal suggestion from TheMealDB API.
-          </p>
+          <p class="eyebrow">Your recommendations</p>
+          <h2 id="results-title">Recipe results</h2>
         </div>
-
-        <button id="meal-button" class="btn btn-mealmate" type="button">
-          Find a random meal
-        </button>
+        <p id="results-summary">Complete the planner to begin.</p>
       </div>
 
-      <p id="api-status" aria-live="polite"></p>
-
-      <div id="meal-result" class="row g-4"></div>
+      <div id="weather-guidance" class="weather-guidance" hidden></div>
+      <p id="api-status" class="status-message" role="status" aria-live="polite"></p>
+      <div id="meal-results" class="meal-grid"></div>
     </section>
 
-    <!-- jQuery feature -->
-    <section id="cooking-tips" class="card border-0 shadow-sm mb-5">
-      <div class="card-body p-4">
-        <div class="d-flex flex-wrap justify-content-between gap-3">
-          <h2 class="h3 mb-0">Quick cooking tips</h2>
-
-          <button
-            id="tips-button"
-            class="btn btn-outline-success"
-            type="button"
-            aria-expanded="true"
-            aria-controls="tips-content"
-          >
-            Hide cooking tips
-          </button>
-        </div>
-
-        <div id="tips-content" class="mt-4">
-          <ul class="mb-0">
-            <li class="mb-2">
-              Read the complete recipe before you start cooking.
-            </li>
-
-            <li class="mb-2">
-              Prepare and measure your ingredients first.
-            </li>
-
-            <li>
-              Check food allergies before serving a meal to someone else.
-            </li>
-          </ul>
-        </div>
+    <section id="favourites" class="favourites-section" aria-labelledby="favourites-title">
+      <div class="section-heading">
+        <p class="eyebrow">Saved on this device</p>
+        <h2 id="favourites-title">Favourite meals</h2>
       </div>
+      <p id="favourites-empty">You have not saved any meals yet.</p>
+      <div id="favourite-results" class="meal-grid"></div>
+    </section>
+
+    <section class="safety-note" aria-labelledby="safety-title">
+      <h2 id="safety-title">Check before cooking</h2>
+      <p>Recipe information comes from third-party services. Always verify ingredients, allergies, cooking temperatures and dietary suitability yourself.</p>
     </section>
   </main>
 
-  <footer class="text-white text-center py-4">
-    <p class="mb-0">
-      MealMate was created by Justice using Bootstrap.
-    </p>
+  <footer class="site-footer">
+    <p><strong>MealMate</strong> — created by Justice as a Web Technologies project.</p>
+    <p>Recipe data supplied by <a href="https://www.themealdb.com/" target="_blank" rel="noopener noreferrer">TheMealDB</a>. Weather data supplied by <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a>.</p>
   </footer>
-
-  <!-- Bootstrap JavaScript -->
-  <script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
-  </script>
-
-  <!-- jQuery library -->
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-
-  <script>
-    const mealForm = document.getElementById("meal-form");
-    const planResult = document.getElementById("plan-result");
-
-    mealForm.addEventListener("submit", function (event) {
-      event.preventDefault();
-
-      const name = document.getElementById("user-name").value.trim();
-      const mealType = document.getElementById("meal-type").value;
-      const diet = document.getElementById("diet").value;
-      const ingredient = document
-        .getElementById("ingredients")
-        .value
-        .trim();
-
-      const experience = document.querySelector(
-        'input[name="experience"]:checked'
-      ).value;
-
-      planResult.textContent =
-        "Hello, " + name +
-        ". Your " + mealType +
-        " plan should include " + ingredient +
-        " and suit " + diet +
-        ". The instructions will be suitable for a " +
-        experience + " cook.";
-
-      planResult.classList.remove("d-none");
-    });
-
-    const mealButton = document.getElementById("meal-button");
-    const mealResult = document.getElementById("meal-result");
-    const apiStatus = document.getElementById("api-status");
-
-    mealButton.addEventListener("click", async function () {
-      apiStatus.textContent = "Finding a meal...";
-      mealResult.innerHTML = "";
-
-      try {
-        const response = await fetch(
-          "https://www.themealdb.com/api/json/v1/1/random.php"
-        );
-
-        if (!response.ok) {
-          throw new Error("The meal service could not be reached.");
-        }
-
-        const data = await response.json();
-        const meal = data.meals[0];
-
-        mealResult.innerHTML = `
-          <div class="col-lg-8 mx-auto">
-            <article class="card border-0 shadow">
-              <img
-                src="${meal.strMealThumb}"
-                class="card-img-top meal-image"
-                alt="${meal.strMeal}"
-              >
-
-              <div class="card-body p-4">
-                <p class="text-success fw-bold mb-2">
-                  ${meal.strArea || "International"} cuisine
-                </p>
-
-                <h3 class="card-title">${meal.strMeal}</h3>
-
-                <p class="card-text">
-                  Category: ${meal.strCategory || "Not specified"}
-                </p>
-
-                <a
-                  href="${meal.strSource || meal.strYoutube}"
-                  class="btn btn-mealmate"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  View recipe source
-                </a>
-              </div>
-            </article>
-          </div>
-        `;
-
-        apiStatus.textContent = "Your random meal is ready.";
-      } catch (error) {
-        apiStatus.textContent =
-          "Sorry, a meal could not be retrieved. Please try again.";
-      }
-    });
-
-    $(document).ready(function () {
-      $("#tips-button").click(function () {
-        $("#tips-content").slideToggle(400, function () {
-          const tipsAreVisible = $(this).is(":visible");
-
-          $("#tips-button")
-            .text(tipsAreVisible
-              ? "Hide cooking tips"
-              : "Show cooking tips"
-            )
-            .attr("aria-expanded", tipsAreVisible);
-        });
-      });
-    });
-  </script>
 </body>
 </html>
